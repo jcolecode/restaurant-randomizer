@@ -1,3 +1,5 @@
+### Tech Stack will be: Next.js (Frontend), Node.js (Backend), MongoDB (optional if we want to store user data), Firebase Authentication (might be needed), Google Places API
+
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
