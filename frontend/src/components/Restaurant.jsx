@@ -2,7 +2,7 @@ import React from 'react';
 
 const Restaurant = ({ restaurantName }) => {
   if (!restaurantName) {
-    return <div>No restaurant found.</div>;
+    return <div className='mx-auto alert alert-warning' role='alert'>No restaurant found, please try again!</div>;
   }
 
   return (
