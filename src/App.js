@@ -15,8 +15,8 @@ function App() {
   const handleRandomize = () => {
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition((position) => {
-        const lat = position.coords.latitude;
-        const lng = position.coords.longitude;
+        const lat = position.coords.latitude + (Math.random() - 0.5) * 0.01;
+        const lng = position.coords.longitude + (Math.random() - 0.5) * 0.01;
         const radius = distance * 1609.34; // Convert miles to meters
 
         axios.post(
