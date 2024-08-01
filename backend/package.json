@@ -1,0 +1,13 @@
+{
+  "devDependencies": {
+    "nodemon": "^3.1.4"
+  },
+  "scripts": {
+    "start": "node app.js",
+    "dev": "nodemon app.js",
+    "_comment": "start is for production & dev is for development"
+  },
+  "dependencies": {
+    "express": "^4.19.2"
+  }
+}
