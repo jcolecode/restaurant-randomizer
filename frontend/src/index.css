@@ -1,0 +1,14 @@
+@import url("http://fonts.googleapis.com/css?family=Roboto");
+
+body {
+    font-family: 'Roboto', sans-serif !important;
+  }
+
+.card {
+    background-color: #D3D3D3;
+    max-width: 60rem !important;
+  }
+
+.btn {
+    background-color: #FF1A1A;
+}

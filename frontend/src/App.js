@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import DistanceSelector from './components/Distance';
 import RestaurantDisplay from './components/Restaurant';
-import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
   const [distance, setDistance] = useState(1);
@@ -65,9 +64,10 @@ function App() {
 
   return (
     <div className="container">
-      <h1 className="my-4">Restaurant Randomizer</h1>
+      <h1 className="my-4 text-center fw-bolder">Restaurant Randomizer</h1>
+      <h3 className='text-center fw-normal pb-4'>Don't know what to eat? Randomize now!</h3>
       <DistanceSelector distanceValue={handleDistanceChange} />
-      <button className="btn btn-danger mt-3" onClick={handleRandomize}>Find a Random Restaurant</button>
+      <button className="btn btn-danger mt-3" onClick={handleRandomize}>Randomize</button>
       <RestaurantDisplay restaurantName={restaurantName} />
     </div>
   );
