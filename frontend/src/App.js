@@ -4,8 +4,9 @@ import DistanceSelector from './components/Distance';
 import RestaurantDisplay from './components/Restaurant';
 
 function App() {
-  const [distance, setDistance] = useState(1);
+  const [distance, setDistance] = useState(0.1);
   const [restaurantName, setRestaurantName] = useState(null);
+  const [isRandomized, setIsRandomized] = useState(false);
 
   const handleDistanceChange = (selectedDistance) => {
     setDistance(selectedDistance);
@@ -14,17 +15,22 @@ function App() {
   const handleRandomize = () => {
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition((position) => {
-        const lat = position.coords.latitude + (Math.random() - 0.5) * 0.01;
-        const lng = position.coords.longitude + (Math.random() - 0.5) * 0.01;
+        const lat = position.coords.latitude;
+        const lng = position.coords.longitude;
 
         axios.post(
-          'http://localhost:5050/randomize', { lat, lng, distance})
+          'http://localhost:5050/randomize', { lat, lng, distance })
         .then((response) => {
           console.log('API Response:', response.data);
           if (response.data.places && response.data.places.length > 0) {
             const randomIndex = Math.floor(Math.random() * response.data.places.length);
             const restaurant = response.data.places[randomIndex];
             setRestaurantName(restaurant.displayName.text);
+            if (response.data.places.length > 0) {
+              setIsRandomized(true);
+            } else {
+              setIsRandomized(false);
+            }
           } else {
             setRestaurantName(null);
           }
@@ -48,7 +54,7 @@ function App() {
           <h3 className='text-center fw-normal pb-4'>Don't know what to eat? Randomize now!</h3>
           <DistanceSelector distanceValue={handleDistanceChange} />
           <button className="btn btn-dark mt-4" onClick={handleRandomize}>Randomize</button>
-          <RestaurantDisplay restaurantName={restaurantName} />
+          <RestaurantDisplay restaurantName={restaurantName} isRandomized={isRandomized}/>
         </div>
     </div>
   );

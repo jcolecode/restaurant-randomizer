@@ -24,7 +24,7 @@ export const getRestaurant = async (req, res) => {
             headers: {
               'Content-Type': 'application/json',
               'X-Goog-Api-Key': process.env.API_KEY,
-              'X-Goog-FieldMask': 'places.displayName'
+              'X-Goog-FieldMask': 'places.displayName.text'
             }
           }
         );

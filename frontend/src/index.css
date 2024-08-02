@@ -9,7 +9,7 @@ html, body {
 
 .card {
     background-color: #D3D3D3;
-    max-width: 70rem !important;
+    border-color: black;
 }
 
 .btn {
