@@ -4,4 +4,4 @@
 
 ### To run frontend from frontend folder ```npm start```
 
-### To run backend from backend folder ```npm dev```
+### To run backend from backend folder ```npm run dev```
