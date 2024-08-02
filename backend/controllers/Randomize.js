@@ -10,6 +10,7 @@ export const getRestaurant = async (req, res) => {
           {
             includedTypes: ['restaurant'],
             maxResultCount: 20,
+            rankPreference: "POPULARITY",
             locationRestriction: {
               circle: {
                 center: {

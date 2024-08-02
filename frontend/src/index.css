@@ -21,7 +21,6 @@ html, body {
     flex-direction: column;
     justify-content: center; /* Center content vertically */
     align-items: center;  
-    height: 100vh;
     position: relative;
 }
 

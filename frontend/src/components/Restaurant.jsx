@@ -1,8 +1,8 @@
 import React from 'react';
 
-const Restaurant = ({ restaurantName, isRandomized }) => {
+const Restaurant = ({ randomRestaurant, allRestaurants, isRandomized }) => {
 
-  if (!restaurantName) {
+  if (!randomRestaurant) {
     if (!isRandomized) {
       return <div className='alert alert-warning mt-4'>Welcome! Please randomize to find a restaurant.</div>;
     }
@@ -11,16 +11,50 @@ const Restaurant = ({ restaurantName, isRandomized }) => {
     }
   }
 
+  const filteredRestaurants = allRestaurants.filter(restaurant => 
+    restaurant.displayName !== randomRestaurant.displayName
+  );
+
   return (
-    <div className="card m-4">
-      <div className="card-body">
-        <h5 className="card-title text-center fw-bolder">{restaurantName}</h5>
-        <p className='card-text'>Kind of food</p>
-        <p className='card-text'>Reviews</p>
-        <p className='card-text'>Price</p>
-        <p className='card-text'>Location</p>
-        <a href='#' className='btn btn-secondary border border-black m-1'>Directions</a>
-        <a href='#' className='btn btn-danger border border-black m-1'>Website</a>
+    <div>
+      <div className='container'>
+        <div className='col-12 mb-4'>
+          <div className="card m-4 d-grid mx-auto">
+            <div className="card-body">
+              <h5 className="card-title text-center fw-bolder">{randomRestaurant.displayName.text}</h5>
+              <p className='card-text'>Kind of food</p>
+              <p className='card-text'>Reviews</p>
+              <p className='card-text'>Price</p>
+              <p className='card-text'>Location</p>
+              <div className='d-grid gap-2 col-9 mx-auto'>
+                <a href='#' className='btn btn-secondary border border-black m-1'>Directions</a>
+                <a href='#' className='btn btn-danger border border-black m-1'>Website</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div className="container mt-4">
+        <h3 className='mt-5 fw-bolder'>Other Restaurants</h3>
+        <div className="row">
+          {filteredRestaurants.map((restaurant, index) => (
+            <div key={index} className="col-lg-4 mb-4">
+              <div className="card m-4 d-grid gap-7 col-12 mx-auto">
+                <div className="card-body">
+                  <h5 className="card-title text-center fw-bolder">{restaurant.displayName.text}</h5>
+                  <p className='card-text'>Kind of food</p>
+                  <p className='card-text'>Reviews</p>
+                  <p className='card-text'>Price</p>
+                  <p className='card-text'>Location</p>
+                  <div className='d-grid gap-2 col-9 mx-auto'>
+                    <a href='#' className='btn btn-secondary border border-black m-1'>Directions</a>
+                    <a href='#' className='btn btn-danger border border-black m-1'>Website</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   );
