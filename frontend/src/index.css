@@ -10,18 +10,22 @@ html, body {
 .card {
     background-color: #D3D3D3;
     border-color: black;
+    height: 100%;
+}
+
+#mainCard, #otherCards {
+    background-color: rgba(211, 211, 211, 0.75);  
+    max-width: 900px;
+}
+
+@media (max-width: 768px) {
+  #mainCard, #otherCards {
+      max-width: 100%; /* Adjusts to full width on smaller screens */
+  }
 }
 
 .btn {
     border-color: #D3D3D3;
-}
-
-.container {
-    display: flex;
-    flex-direction: column;
-    justify-content: center; /* Center content vertically */
-    align-items: center;  
-    position: relative;
 }
 
 @keyframes color {

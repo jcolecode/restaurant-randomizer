@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import DistanceSelector from './components/Distance';
 import RestaurantDisplay from './components/Restaurant';
+import Header from './components/Header';
 
 function App() {
   const [distance, setDistance] = useState(0.1);
@@ -50,15 +51,14 @@ function App() {
   };
 
   return (
-    <div>
+    <div className='container'>
       <div id='stars'></div>
-        <div className="container">
-          <h1 className="my-4 text-center fw-bolder">Restaurant Randomizer</h1>
-          <h3 className='text-center fw-normal pb-4'>Don't know what to eat? Randomize now!</h3>
-          <DistanceSelector distanceValue={handleDistanceChange} />
+        <Header />
+        <DistanceSelector distanceValue={handleDistanceChange} />
+        <div className='text-center'>
           <button className="btn btn-dark mt-4" onClick={handleRandomize}>Randomize</button>
-          <RestaurantDisplay randomRestaurant={randomRestaurant} isRandomized={isRandomized} allRestaurants={allRestaurants}/>
         </div>
+        <RestaurantDisplay randomRestaurant={randomRestaurant} isRandomized={isRandomized} allRestaurants={allRestaurants}/>
     </div>
   );
 }
