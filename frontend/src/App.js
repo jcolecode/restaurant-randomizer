@@ -51,14 +51,16 @@ function App() {
   };
 
   return (
-    <div className='container'>
+    <div>
       <div id='stars'></div>
-        <Header />
-        <DistanceSelector distanceValue={handleDistanceChange} />
-        <div className='text-center'>
-          <button className="btn btn-dark mt-4" onClick={handleRandomize}>Randomize</button>
+        <div className="container">
+          <Header />
+          <DistanceSelector distanceValue={handleDistanceChange} />
+          <div className='text-center'>
+            <button className="btn btn-dark mt-4" onClick={handleRandomize}>Randomize</button>
+          </div>
+          <RestaurantDisplay randomRestaurant={randomRestaurant} isRandomized={isRandomized} allRestaurants={allRestaurants}/>
         </div>
-        <RestaurantDisplay randomRestaurant={randomRestaurant} isRandomized={isRandomized} allRestaurants={allRestaurants}/>
     </div>
   );
 }
