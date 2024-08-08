@@ -17,7 +17,7 @@ const Distance = ({ distanceValue }) => {
         <option value="1">1 Mile</option>
         <option value="2">2 Miles</option>
         <option value="3">3 Miles</option>
-        <option value="4">4 Mile</option>
+        <option value="4">4 Miles</option>
         <option value="5">5 Miles</option>
         <option value="10">10 Miles</option>
         <option value="20">20 Miles</option>
