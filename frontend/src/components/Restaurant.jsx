@@ -9,15 +9,14 @@ const PriceLevel = {
   PRICE_LEVEL_VERY_EXPENSIVE: "$$$$ (Very Expensive)"
 };
 
-const Restaurant = ({ randomRestaurant, allRestaurants, isRandomized }) => {
+const Restaurant = ({ randomRestaurant, allRestaurants, hasLoadedOnce }) => {
+
+  if (!hasLoadedOnce) {
+    return <div className='alert alert-warning mt-4 text-center fw-bolder'>Welcome! Please randomize to find a restaurant.</div>;
+  }
 
   if (!randomRestaurant) {
-    if (!isRandomized) {
-      return <div className='alert alert-warning mt-4 text-center fw-bolder'>Welcome! Please randomize to find a restaurant.</div>;
-    }
-    else {
-      return <div className='alert alert-warning mt-4 text-center fw-bolder'>No restaurant found! Please adjust your search parameters.</div>;
-    }
+    return <div className='alert alert-warning mt-4 text-center fw-bolder'>No restaurant found! Please adjust your search parameters.</div>;
   }
 
   const filteredRestaurants = allRestaurants.filter(restaurant => 

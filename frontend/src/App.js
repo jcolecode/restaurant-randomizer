@@ -11,9 +11,9 @@ function App() {
   const [restaurantType, setRestaurantType] = useState('restaurant');
   const [randomRestaurant, setRandomRestaurant] = useState(null);
   const [allRestaurants, setAllRestaurants] = useState([]);
-  const [isRandomized, setIsRandomized] = useState(false);
   const [loading, setLoading] = useState(false);
   const [redirectToLocationPage, setRedirectToLocationPage] = useState(false);
+  const [hasLoadedOnce, setHasLoadedOnce] = useState(false);
 
   const handleDistanceChange = (selectedDistance) => {
     setDistance(selectedDistance);
@@ -59,16 +59,12 @@ function App() {
         const restaurant = response.data.places[randomIndex];
         setRandomRestaurant(restaurant);
         setAllRestaurants(response.data.places);
-        if (response.data.places.length > 0) {
-          setIsRandomized(true);
-        } else {
-          setIsRandomized(false);
-        }
       } else {
         setRandomRestaurant(null);
         setAllRestaurants(null);
       }
       setLoading(false);
+      setHasLoadedOnce(true);
     })
     .catch((error) => {
       console.error('Error fetching data:', error.response ? error.response.data : error.message);
@@ -112,8 +108,8 @@ function App() {
                 ) : (
                   <RestaurantDisplay
                     randomRestaurant={randomRestaurant}
-                    isRandomized={isRandomized}
                     allRestaurants={allRestaurants}
+                    hasLoadedOnce={hasLoadedOnce}
                   />
                 )}
               </div>
